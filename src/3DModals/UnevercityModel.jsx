@@ -8,7 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const UnevercityModel = ({ Coordinates }) => {
 
-    const { scene } = useGLTF(`${import.meta.env.BASE_URL}models/NewUnivercity.glb` , true , (loader) => {
+    const { scene } = useGLTF('/models/NewUnivercity.glb' , true , (loader) => {
       loader.setDRACOLoader(new DRACOLoader());
       loader.setMeshoptDecoder(MeshoptDecoder);
     });
