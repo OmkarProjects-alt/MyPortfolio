@@ -7,7 +7,7 @@ import {
   useTransform,
   useInView,
 } from "framer-motion";
-import { Tilt } from "react-tilt";
+import Tilt from 'react-parallax-tilt';
 
 const Hero = () => {
   const { scrollXProgress } = useScroll();
