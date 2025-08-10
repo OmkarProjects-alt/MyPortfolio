@@ -35,7 +35,7 @@ const Projects = () => {
         "WebSocket",
         "Firebase",
       ],
-      video: "/models/video/CodeSyncTryRecord.mp4",
+      video: "/models/video/CodeSyncVideo.mp4",
       links: {
         github: "https://github.com/OmkarProjects-alt/CodeSync/tree/master",
         live: "https://codesync-gray.vercel.app/",

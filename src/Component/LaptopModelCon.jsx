@@ -3,10 +3,10 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import LapTopModel from '../Model/LapTopModel'
 import { Suspense } from 'react'
-import LavaPlanet from '../3DModals/LavaPlanet'
+// import LavaPlanet from '../3DModals/LavaPlanet'
 import BackGround from './BackGround'
 
-const LazyPlanet = React.lazy(() => import('../3DModals/LavaPlanet'));
+// const LazyPlanet = React.lazy(() => import('../3DModals/LavaPlanet'));
 
 gsap.registerPlugin(ScrollTrigger);
 
