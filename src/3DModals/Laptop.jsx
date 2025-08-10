@@ -39,7 +39,7 @@ const Laptop = React.forwardRef((props, ref) => {
     UpdateRotation();
   }, [Coordinates, laptopRef]);
 
-  const model = useGLTF(`${import.meta.env.BASE_URL}models/asusLaptop2.glb`, true);
+  const model = useGLTF('models/asusLaptop2.glb', true);
   const screenTexture = useTexture(
     `${import.meta.env.BASE_URL}models/IMG/NewImg.png`,
   );
