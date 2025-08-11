@@ -35,7 +35,7 @@ const Projects = () => {
         "WebSocket",
         "Firebase",
       ],
-      video: "/models/video/CodeSyncVideo.mp4",
+      video: "/models/video/CodeSyncVideoPro.mp4",
       links: {
         github: "https://github.com/OmkarProjects-alt/CodeSync/tree/master",
         live: "https://codesync-gray.vercel.app/",
@@ -60,7 +60,7 @@ const Projects = () => {
         "Firebase",
         "TMDB(API)",
       ],
-      video: "/models/video/CinePrimeVideo.mp4",
+      video: "/models/video/CinePrimeVideoPro.mp4",
       links: {
         github: "https://github.com/OmkarProjects-alt/CinePrime",
       },
