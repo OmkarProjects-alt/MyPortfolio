@@ -7,7 +7,7 @@ import {
   useTransform,
   useInView,
 } from "framer-motion";
-import Tilt from 'react-parallax-tilt';
+import Tilt from "react-parallax-tilt";
 
 const Hero = () => {
   const { scrollXProgress } = useScroll();
@@ -15,19 +15,18 @@ const Hero = () => {
   const ref = useRef(null);
   const inview = useInView(ref);
 
-    const ScrollTo = (id , offset) => {
-      const element = document.getElementById(id);
-      if(element){
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - offset;
+  const ScrollTo = (id, offset) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-  }
-
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const defaultOptions = {
     reverse: false,
@@ -48,7 +47,7 @@ const Hero = () => {
     >
       <h1 className="text-4xl font-bold text-white">About</h1>
       <div className="flex flex-col gap-y-10 lg:flex-row md:flex-row md:gap-5 justify-between items-center ">
-        <Tilt options={defaultOptions} className="w-full lg:w-1/2 md:w-1/2">
+        <Tilt options={defaultOptions} className="w-full lg:w-auto md:w-1/2">
           <motion.div
             ref={ref}
             className=" select-none"
@@ -57,43 +56,73 @@ const Hero = () => {
             transition={{ duration: 2, ease: "anticipate" }}
           >
             <div className=" lg:h-80 lg:w-160 h-auto  bg-gradient-to-br from-[#251b356d] via-[#2b164964] to-[#3b0f606f] rounded-3xl py-5 px-9 text-emerald-100 animate-slideY shadow-[0_0_35px_-5px_rgba(91,57,159,0.7)] hover:shadow-[0_0_40px_-5px_rgba(91,57,159,0.7)]">
-              <h1 className="font-bold font-stretch-120% text-3xl text-purple-50 text-shadow-indigo-900 text-shadow-2xs">
-                Omkar Gudappe
+              <h1 className="mb-3 font-bold font-stretch-120% text-3xl text-purple-50 text-shadow-indigo-900 text-shadow-2xs">
+                Hello, I'm Omkar Gudappe,
               </h1>
-              <p className="text-2xl">Student</p>
               <p>
-                Hello, I'm Omkar Gudappe, a passionate student with a keen
-                interest in web development. I have recently completed my
-                Bachelor's degree in Computer Science and I'm eager to apply my
-                skills in real-world projects to get experience and knowledge of
-                industry level projects. I have worked on some projects like 
-                <span className="text-purple-50 underline"><a onClick={(e) => {e.preventDefault() ; ScrollTo('CodeSync' , 50)}} href="#CodeSync"> CodeSync </a></span>
+                a passionate student with a keen interest in web development. I
+                have recently completed my Bachelor's degree in Computer Science
+                and I'm eager to apply my skills to real-world projects to gain
+                experience and deepen my understanding of industry-level
+                development. I have worked on some projects like
+                <span className="text-purple-50 underline">
+                  <a
+                    onClick={(e) => {
+                      e.preventDefault();
+                      ScrollTo("CodeSync", 50);
+                    }}
+                    href="#CodeSync"
+                  >
+                    {" "}
+                    CodeSync{" "}
+                  </a>
+                </span>
                 which is a collaborative web code editor and
-                <span className="text-purple-50 underline"><a onClick={(e) => {e.preventDefault() ; ScrollTo('CinePrime' , 50)}} href="#CinePrime"> CinePrime </a></span>
-                which is a full-stack movie ticket booking platform. 
+                <span className="text-purple-50 underline">
+                  <a
+                    onClick={(e) => {
+                      e.preventDefault();
+                      ScrollTo("CinePrime", 50);
+                    }}
+                    href="#CinePrime"
+                  >
+                    {" "}
+                    CinePrime{" "}
+                  </a>
+                </span>
+                which is a full-stack movie ticket booking platform.
               </p>
               <div className="flex justify-between gap-x-3 items-center mt-4">
-                <a href="https://github.com/OmkarProjects-alt?tab=repositories" className="text-emerald-100 hover:underline">
+                <a
+                  href="https://github.com/OmkarProjects-alt?tab=repositories"
+                  className="text-emerald-100 hover:underline"
+                >
                   GitHub Link
                 </a>
-                <a href="#Contact" onClick={(e) => {e.preventDefault(); ScrollTo('Contact', 50)}} className="text-emerald-100 hover:underline">
+                <a
+                  href="#Contact"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    ScrollTo("Contact", 50);
+                  }}
+                  className="text-emerald-100 hover:underline"
+                >
                   Contact Me
                 </a>
-                {/* <Circle/> */}
               </div>
             </div>
           </motion.div>
         </Tilt>
         <div
-          id="profile-img"
-          className="bg-gradient-to-tr from-[#588ef2] via-[#5b399fdf] to-[#544ce5]  p-3 rounded-full lg:h-90 lg:w-90 h-80 w-80 animate__animated animate__fadeIn animate__delay-2s shadow-[0_0_75px_-5px_rgba(88,142,242,0.6)] hover:shadow-[0_0_75px_-5px_rgba(108,59,130,0.7)]"
+          id="LaptopTarget"
+          className="bg-gradient-to-tr from-[#588ef2] via-[#5b399fdf] to-[#544ce5]  p-3 rounded-full lg:h-90 lg:w-90 h-80 w-80 shadow-[0_0_75px_-5px_rgba(88,142,242,0.6)] hover:shadow-[0_0_75px_-5px_rgba(108,59,130,0.7)]"
         >
           <div className="rounded-full lg:h-84 lg:w-84 h-74 w-74 flex justify-center items-center overflow-hidden">
             <img
               src="https://wallpapercave.com/wp/wp11841496.jpg"
               alt=""
               className="h-full w-full object-cover"
-            />
+          />
           </div>
         </div>
       </div>

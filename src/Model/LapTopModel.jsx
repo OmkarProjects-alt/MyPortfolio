@@ -1,80 +1,65 @@
-import React, { useEffect , useRef , useState} from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import Laptop from '../3DModals/Laptop'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 const LapTopModel = ({ mainRef }) => {
+  const [Coordinates, setCoordinates] = useState(0);
+  const [targetOffset, setTargetOffset] = useState({ x: 0, y: 0 });
+  const containerRef = useRef(null);
 
-    const [Coordinates, setCoordinates] = useState(0);
+  useEffect(() => {
+    const laptopEl = containerRef.current;
+    const targetEl = document.getElementById('LaptopTarget');
 
-    const laptopRef = useRef()
+    if (laptopEl && targetEl) {
+      const laptopRect = laptopEl.getBoundingClientRect();
+      const targetRect = targetEl.getBoundingClientRect();
 
-    useEffect(() => {
+      const deltaX = targetRect.left - laptopRect.left + 15;
+      const deltaY = targetRect.top - laptopRect.top + 70;
+      console.log("Target Left" , targetRect.left , "laptop left" , laptopRect.left , "deltaX", deltaX , "deltaY", deltaY)
 
-        if(window.innerWidth < 768) return;
+      setTargetOffset({ x: deltaX, y: deltaY });
+    }
+  }, []);
 
-        if (!mainRef.current || !laptopRef.current) return;
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 20%", "end 20%"],
+  });
 
-        gsap.set(laptopRef.current, {
-            x:0,
-            y: 0,
-            scale: 1,
-            ease: 'power1.in',
-        })
+  const y = useTransform(scrollYProgress, [0, 1], [0, targetOffset.y]);
+  const x = useTransform(scrollYProgress, [0, 1], [0, targetOffset.x]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
 
-        const Target = document.getElementById('LapTopModelContainer');
-
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: Target,
-                start: 'top 40%',
-                end: 'bottom 20%',
-                scrub: 0.5,
-                onUpdate: (self) => {
-                    if(self.progress <= 0.60272727301626496){
-                        setCoordinates(0);
-                    }else if(self.progress > 0.60272727301626496){
-                        setCoordinates(1);
-                    }
-                }
-            }
-        })
-        tl.to(laptopRef.current, {
-            y: 850,
-            x: 600,
-            scale: 0.7,
-            zIndex: 60,
-            ease: 'power1.in',
-        })
-        return () => tl.kill();
-    }, [])
+  scrollYProgress.on("change", (progress) => {
+    setCoordinates(progress > 0.6 ? 1 : 0);
+  });
 
   return (
-    <div ref={laptopRef} className='h-[400px] w-[600px]'>
+    <motion.div
+      ref={containerRef}
+      style={{ y, x, scale, zIndex: 60 }}
+      className='h-[400px] w-[600px]'
+    >
       <Canvas camera={{ position: [0, 0, 10], fov: 25 }}>
-          <ambientLight intensity={0.5} />
-          <directionalLight
-              position={[0, 950, 10]}
-              intensity={1}
-              castShadow
-          />
-          <pointLight position={[10, 10, 10]} intensity={200} />
-          <Laptop Coordinates={Coordinates} />
-          <OrbitControls
-            enablePan={false}
-            enableZoom={false}
-            minPolarAngle={Math.PI / 2}
-            maxPolarAngle={Math.PI / 2}
-            minAzimuthAngle={-Infinity}
-            maxAzimuthAngle={Infinity}
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[0, 950, 10]} intensity={1} castShadow />
+        <pointLight position={[10, 10, 10]} intensity={200} />
+        <Laptop Coordinates={Coordinates} />
+        <OrbitControls
+          enablePan={false}
+          enableZoom={false}
+          minPolarAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 2}
+          minAzimuthAngle={-Infinity}
+          maxAzimuthAngle={Infinity}
         />
-        </Canvas>
-    </div>
-  )
-}
+      </Canvas>
+    </motion.div>
+  );
+};
 
-export default LapTopModel
+export default LapTopModel;

@@ -1,54 +1,118 @@
-import React, { useEffect, useRef } from "react";
+// import React, { useEffect, useRef } from "react";
+// import { Float, useGLTF, useTexture } from "@react-three/drei";
+// import * as THREE from "three";
+// import gsap from "gsap";
+
+// const Laptop = React.forwardRef((props, ref) => {
+//   const { Coordinates } = props;
+//   const laptopRef = useRef();
+
+//   useEffect(() => {
+//     if (!laptopRef?.current) return;
+//     if (Coordinates === undefined || Coordinates === null) return;
+
+//     const UpdateRotation = () => {
+//       const Rotations = [
+//         [0, 0, 0],
+//         [0, -0.8, 0],
+//       ];
+
+//       if (Coordinates >= 1) {
+//         gsap.to(laptopRef.current.rotation, {
+//           x: 0,
+//           y: -0.8,
+//           z: 0,
+//           duration: 1,
+//           ease: "power3.inOut",
+//         });
+//       }
+//       if (Coordinates == 0) {
+//         gsap.to(laptopRef.current.rotation, {
+//           x: 0,
+//           y: 0,
+//           z: 0,
+//           duration: 1,
+//           ease: "power3.inOut",
+//         });
+//       }
+//     };
+//     UpdateRotation();
+//   }, [Coordinates, laptopRef]);
+
+//   const model = useGLTF('models/Laptop.glb', true);
+//   const screenTexture = useTexture(
+//     `${import.meta.env.BASE_URL}models/IMG/LaptopScreen.png`,
+//   );
+
+//   useEffect(() => {
+//     const screenMesh = model.scene.getObjectByName("Object_19"); // Use your mesh name
+
+//     if (screenMesh) {
+
+//       screenTexture.anisotropy = 16;
+//       screenTexture.magFilter = THREE.LinearFilter;
+//       screenTexture.minFilter = THREE.LinearMipMapLinearFilter;
+//       screenTexture.needsUpdate = true;
+
+//       screenMesh.material = new THREE.MeshStandardMaterial({
+//         map: screenTexture,
+//         roughness: 0,
+//         metalness: 0.1,
+//       });
+
+//       if (!screenMesh.geometry.attributes.uv) {
+//         console.warn("⚠️ No UVs detected! Texture will not map correctly.");
+//       }
+//     }
+//   }, [model, screenTexture]);
+
+//   return (
+//     <Float speed={1} floatIntensity={2} rotationIntensity={1}>
+//       <primitive
+//         ref={laptopRef}
+//         object={model.scene}
+//         position={[0, -3.5, 0]}
+//         scale={1}
+//         rotation={[0, 0, 0]}
+//       />
+//     </Float>
+//   );
+// });
+
+// export default Laptop;
+
+
+
+import React, { useEffect, useRef, useState } from "react";
 import { Float, useGLTF, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-import gsap from "gsap";
+import { useSpring } from "framer-motion";
+import { useFrame } from "@react-three/fiber";
 
 const Laptop = React.forwardRef((props, ref) => {
   const { Coordinates } = props;
   const laptopRef = useRef();
+  const [modelLoaded, setModelLoaded] = useState(false);
 
-  useEffect(() => {
-    if (!laptopRef?.current) return;
-    if (Coordinates === undefined || Coordinates === null) return;
-
-    const UpdateRotation = () => {
-      const Rotations = [
-        [0, 0, 0],
-        [0, -0.8, 0],
-      ];
-
-      if (Coordinates >= 1) {
-        gsap.to(laptopRef.current.rotation, {
-          x: 0,
-          y: -0.8,
-          z: 0,
-          duration: 1,
-          ease: "power3.inOut",
-        });
-      }
-      if (Coordinates == 0) {
-        gsap.to(laptopRef.current.rotation, {
-          x: 0,
-          y: 0,
-          z: 0,
-          duration: 1,
-          ease: "power3.inOut",
-        });
-      }
-    };
-    UpdateRotation();
-  }, [Coordinates, laptopRef]);
-
-  const model = useGLTF('models/Laptop.glb', true);
+  // Load model & texture
+  const model = useGLTF("models/Laptop.glb", true);
   const screenTexture = useTexture(
-    `${import.meta.env.BASE_URL}models/IMG/LaptopScreen.png`,
+    `${import.meta.env.BASE_URL}models/IMG/LaptopScreen.png`
   );
 
+  // Mark as loaded
   useEffect(() => {
-    const screenMesh = model.scene.getObjectByName("Object_19"); // Use your mesh name
+    if (model && model.scene) {
+      setModelLoaded(true);
+    }
+  }, [model]);
 
+  // Apply screen texture when model is loaded
+  useEffect(() => {
+    if (!modelLoaded) return;
+
+    const screenMesh = model.scene.getObjectByName("Object_19");
     if (screenMesh) {
-
       screenTexture.anisotropy = 16;
       screenTexture.magFilter = THREE.LinearFilter;
       screenTexture.minFilter = THREE.LinearMipMapLinearFilter;
@@ -64,7 +128,40 @@ const Laptop = React.forwardRef((props, ref) => {
         console.warn("⚠️ No UVs detected! Texture will not map correctly.");
       }
     }
-  }, [model, screenTexture]);
+  }, [modelLoaded, model, screenTexture]);
+
+  // Create springs for each rotation axis
+  const xSpring = useSpring(0, { stiffness: 80, damping: 20, mass: 0.8 });
+  const ySpring = useSpring(0, { stiffness: 80, damping: 20, mass: 0.8 });
+  const zSpring = useSpring(0, { stiffness: 80, damping: 20, mass: 0.8 });
+
+  // Update rotation targets when Coordinates changes
+  useEffect(() => {
+    if (!modelLoaded) return;
+
+    if (Coordinates >= 1) {
+      xSpring.set(0);
+      ySpring.set(-0.8);
+      zSpring.set(0);
+    } else {
+      xSpring.set(0);
+      ySpring.set(0);
+      zSpring.set(0);
+    }
+  }, [Coordinates, modelLoaded, xSpring, ySpring, zSpring]);
+
+  // Apply rotation every frame
+  useFrame(() => {
+    if (modelLoaded && laptopRef.current) {
+      laptopRef.current.rotation.set(
+        xSpring.get(),
+        ySpring.get(),
+        zSpring.get()
+      );
+    }
+  });
+
+  if (!modelLoaded) return null; // Don't render until loaded
 
   return (
     <Float speed={1} floatIntensity={2} rotationIntensity={1}>
@@ -73,7 +170,6 @@ const Laptop = React.forwardRef((props, ref) => {
         object={model.scene}
         position={[0, -3.5, 0]}
         scale={1}
-        rotation={[0, 0, 0]}
       />
     </Float>
   );

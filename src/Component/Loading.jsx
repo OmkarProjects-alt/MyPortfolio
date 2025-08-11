@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const Loading = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
-  const totalDuration = 20000;
+  const totalDuration = 10000;
 
   useEffect(() => {
     // Disable scrolling

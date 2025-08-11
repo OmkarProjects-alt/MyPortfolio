@@ -49,9 +49,9 @@ const MoreDetail = ({ projectId, description, image, technologies, heading, link
             </div>
             
             {video && (
-              <div className='w-full'>
+              <div className='w-full bg-neutral-800'>
                 {isLoading && (
-                  <div className=' flex w-full h-auto items-center justify-center bg-gray-900 bg-opacity-50 z-30 rounded-2xl'>
+                  <div className=' flex w-full h-28 items-center justify-center bg-gray-900 bg-opacity-50 z-30 rounded-2xl'>
                     <div className='w-12 h-12 border-4 border-t-4 border-purple-500 rounded-full animate-spin'></div>
                   </div>
                 )}
