@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import MoreDetail from "../Model/MoreDetail";
-import Background from "/models/IMG/fromWeb2.png";
+import Background from "/models/IMG/Background.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,7 +25,7 @@ const Projects = () => {
       heading: "Collaborative Web Code Editor",
       description:
         "CodeSync is a full-stack, real-time collaborative coding platform that enables multiple users to write, edit, and run code together—live, just like Google Docs but for developers. It supports multi-language execution (Python, Java, C++, JS, Go, etc.), a WebSocket-powered terminal, secure user authentication via Firebase (Google/GitHub), and real-time syncing using Yjs & WebSocket.",
-      image: "/models/IMG/CodeSync.png",
+      image: "/models/IMG/CodeSyncLOGO.png",
       technologies: [
         "React",
         "Node.js",
@@ -51,7 +51,7 @@ const Projects = () => {
       heading: "A Full-Stack Movie Ticket Booking Platform",
       description:
         "CineBook Pro is a full-stack web application that simulates a modern movie ticket booking experience, similar to platforms like BookMyShow or Fandango. Designed with both user convenience and scalability in mind, this project integrates real-time movie data, interactive seat selection, and secure authentication to deliver a seamless cinema booking experience.",
-      image: "/models/IMG/CinePrime.png",
+      image: "/models/IMG/CinePrimeLOGO.png",
       technologies: [
         "React",
         "Python(Flask)",

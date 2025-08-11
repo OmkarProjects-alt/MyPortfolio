@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-// import UnevercityModel from "../3DModals/UnevercityModel";
+import UnevercityModel from "../3DModals/UnevercityModel";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion , useInView } from "framer-motion";
@@ -112,7 +112,7 @@ const Education = () => {
                   castShadow
                 />
                 <pointLight position={[10, 10, 10]} intensity={5} />
-                {/* <UnevercityModel Coordinates={Cordinates} /> */}
+                <UnevercityModel Coordinates={Cordinates} />
               </Canvas>
             </div>
           </div>

@@ -17,7 +17,7 @@ const BackGround = () => {
         <motion.div
           className='absolute -z-10 h-screen w-full'
           style={{
-            backgroundImage: 'url(/models/IMG/Image3.png)',
+            backgroundImage: 'url(/models/IMG/Image4.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             y: mounten3,
@@ -26,7 +26,7 @@ const BackGround = () => {
         <motion.div
           className='absolute -z-20 h-screen w-full'
           style={{
-            backgroundImage: 'url(/models/IMG/Image8.png)',
+            backgroundImage: 'url(/models/IMG/Image3.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             y: mounten2,
@@ -35,7 +35,7 @@ const BackGround = () => {
         <motion.div
           className='absolute -z-30 h-screen w-full'
           style={{
-            backgroundImage: 'url(/models/IMG/Image4.jpg)',
+            backgroundImage: 'url(/models/IMG/ImageBG.jpg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             y: mounten,
@@ -44,7 +44,7 @@ const BackGround = () => {
         <motion.div
             className='absolute left-80 top-64 -z-20 h-20 w-20'
             style={{
-                backgroundImage: 'url(/models/IMG/Planet1.png)',
+                backgroundImage: 'url(/models/IMG/Image1.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -55,7 +55,7 @@ const BackGround = () => {
         <motion.div
             className='absolute right-60 top-64  -z-20 h-40 w-40'
             style={{
-                backgroundImage: 'url(/models/IMG/Planet2.png)',
+                backgroundImage: 'url(/models/IMG/Image2.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',

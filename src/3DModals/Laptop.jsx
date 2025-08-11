@@ -41,7 +41,7 @@ const Laptop = React.forwardRef((props, ref) => {
 
   const model = useGLTF('models/Laptop.glb', true);
   const screenTexture = useTexture(
-    `${import.meta.env.BASE_URL}models/IMG/NewImg.png`,
+    `${import.meta.env.BASE_URL}models/IMG/LaptopScreen.png`,
   );
 
   useEffect(() => {
