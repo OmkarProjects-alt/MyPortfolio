@@ -12,23 +12,16 @@ import StarStreakBackground from '../Model/StarStreakBackground'
 import { div } from 'framer-motion/client'
 
 const MainPage = () => {
-  const [Time , setTime] = useState(true)
   const [showLoading , setShowLoading] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top on load
   }, []);
 
-  
-  useEffect(() => {
-    setTimeout(() => {
-      setTime(false);
-    } , 16000)
-  } , [])
 
   const handleLoadingComplete = () => {
     setShowLoading(false);
-    document.body.style.overflow = ''; // Restore scrolling
+    document.body.style.overflow = '';
   };
 
   return (

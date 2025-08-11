@@ -44,7 +44,7 @@ const Hero = () => {
   return (
     <div
       id="Hero"
-      className="z-9 relative bg-gradient-to-b from-[#232626e0] via-[#2b164964] to-[#3b0f606f] p-4 md:p-16 lg:p-28 h-auto lg:h-screen"
+      className="z-9 relative bg-gradient-to-b from-[#232626e0] via-[#2b164964] to-[#3b0f606f] p-10 md:p-16 lg:p-28 h-auto lg:h-screen"
     >
       <h1 className="text-4xl font-bold text-white">About</h1>
       <div className="flex flex-col gap-y-10 lg:flex-row md:flex-row md:gap-5 justify-between items-center ">

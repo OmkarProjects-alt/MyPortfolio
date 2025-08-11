@@ -7,8 +7,8 @@ const BackGround = () => {
   const mounten = useTransform(x, [0, 0.5], ['0%', '0%']);
   const mounten2 = useTransform(x, [0, 0.5], ['0%', '30%']);
   const mounten3 = useTransform(x, [0, 0.5], ['0%', '0%']);
-  const mounten4 = useTransform(x, [0, 0.5], ['0%', '70%']);
-  const mounten5 = useTransform(x, [0, 0.5], ['0%', '50%']);
+  const mounten4 = useTransform(x, [0, 0.2], ['0%', '90%']);
+  const mounten5 = useTransform(x, [0, 0.2], ['0%', '90%']);
 
 
   return (
@@ -42,7 +42,7 @@ const BackGround = () => {
           }}
         />
         <motion.div
-            className='absolute left-80 top-64 -z-20 h-20 w-20'
+            className='absolute top-30 left-60 lg:left-80 lg:top-64 -z-20 h-20 w-20'
             style={{
                 backgroundImage: 'url(/models/IMG/Image1.png)',
                 backgroundSize: 'cover',
@@ -53,7 +53,7 @@ const BackGround = () => {
         />
 
         <motion.div
-            className='absolute right-60 top-64  -z-20 h-40 w-40'
+            className='absolute right-60 top-64  -z-30 h-40 w-40'
             style={{
                 backgroundImage: 'url(/models/IMG/Image2.png)',
                 backgroundSize: 'cover',

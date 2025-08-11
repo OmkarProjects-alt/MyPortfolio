@@ -41,7 +41,7 @@ const SkillSection = (delay) => {
       </h2>
       <div className="lg:flex md:flex flex-row lg:gap-6 flex-wrap justify-center grid-cols-2 grid justify-items-center">
         {Languages.map((lang, index) => (
-          <div key={index} className=" flex justify-center items-center">
+          <div key={index} className=" flex justify-center items-cente w-20 h-40 md:w-50 lg:w-80">
             <motion.div
               
               initial={{ y: 770 , x: 0 , opacity: 0}}
