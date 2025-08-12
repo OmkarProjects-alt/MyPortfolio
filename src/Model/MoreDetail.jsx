@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, transform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const MoreDetail = ({ projectId, description, image, technologies, heading, links, title, video, technical_Highlights, CloseModelBtn }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,11 +29,6 @@ const MoreDetail = ({ projectId, description, image, technologies, heading, link
         transition={{ duration: 2 }}
         className='bg-gradient-to-tl from-[#0e0e0e] via-[#1b1b1c] to-[#0d0d0e] rounded-2xl mt-14 shadow-lg p-5 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative animate__animated animate__fadeIn transform-3d'
       >
-        {/* {!isLoading && (
-          <div className='top- absolute inset-0 flex w-full h-14 items-center justify-center bg-gray-900 bg-opacity-50 z-30 rounded-2xl'>
-            <div className='w-12 h-12 border-4 border-t-4 border-purple-500 rounded-full animate-spin'></div>
-          </div>
-        )} */}
         
         <button 
           className='absolute top-2 right-2 bg-red-700 text-white cursor-pointer h-8 w-8 rounded-full flex items-center justify-center'

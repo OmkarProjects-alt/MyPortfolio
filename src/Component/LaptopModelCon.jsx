@@ -4,11 +4,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import LapTopModel from '../Model/LapTopModel'
 import { Suspense } from 'react'
 import { motion } from 'framer-motion'
-// import LavaPlanet from '../3DModals/LavaPlanet'
 import BackGround from './BackGround'
 import { FlipWords } from './FlipWords'
-
-// const LazyPlanet = React.lazy(() => import('../3DModals/LavaPlanet'));
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,7 +32,7 @@ const LaptopModelCon = () => {
             <h1 className='text-3xl'>Hi, I'm Omkar</h1>
             <h2 className='text-2xl'>I Create this 3D Portfolio</h2>
             <h1 className='text-2xl'>Powered by</h1>
-            <div className='text-4xl'><FlipWords words={["React" ,"Three Js" ,"Fremer motion",]}/></div>
+            <div className='text-4xl'><FlipWords words={["React" ,"Three Js" ,"Fremer motion", "Tailwind CSS"]}/></div>
           </motion.div>
         </div>
       </div>

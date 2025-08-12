@@ -15,7 +15,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="z-10 w-full relative bg-[#000000] text-center overflow-hidden text-white">
+    <footer className="z-20 w-full relative bg-[#000000] text-center overflow-hidden text-white">
       <div className="relative z-10  h-auto  ">
         <div className="h-full p-4 rounded-t-full bg-gradient-to-br from-[#251b35] via-[#2b1649] to-[#3b0f60]">
           <div className="flex lg:flex-row md:flex-row flex-col items-center justify-between gap-6 h-full w-full text-gray-400">
@@ -86,7 +86,7 @@ const Footer = () => {
             </div>
             <div className=" md:ml-10 flex flex-col justify-center">
               <h1 className="text-[1.3rem] font-bold">Omkar Gudappe</h1>
-              <p>&copy; 2025 Omkar Gudappe. All rights reserved.</p>
+              <p>&copy; 2025 Omkar Gudappe | Built with using React & Three.js</p>
             </div>
             <div className="lg:mr-20 md:mr-20">
               <div className="flex items-center justify-center gap-4">

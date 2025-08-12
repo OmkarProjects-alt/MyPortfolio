@@ -1,7 +1,5 @@
 import React, { useRef } from "react";
-// import Circle from "../3DModals/Circle";
 import {
-  animate,
   motion,
   useScroll,
   useTransform,
@@ -47,20 +45,64 @@ const Hero = () => {
     >
       <h1 className="text-4xl font-bold text-white">About</h1>
       <div className="flex flex-col gap-y-10 lg:flex-row md:flex-row md:gap-5 justify-between items-center ">
-        <Tilt options={defaultOptions} className="w-full lg:w-auto md:w-1/2">
+        <Tilt options={defaultOptions} className="w-full lg:w-auto md:w-1/2 relative">
+          <motion.div
+            className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+            initial={{ x: "-200%" }}
+            animate={{ x: "200%" }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+          <motion.div
+            className="absolute top-0 right-0 w-1 h-full bg-gradient-to-b from-purple-500 to-pink-500 rounded-full"
+            initial={{ y: "-200%" }}
+            animate={{ y: "200%" }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear",
+              delay: 0.75,
+            }}
+          />
+          <motion.div
+            className="absolute bottom-0 right-0 w-full h-1 bg-gradient-to-l from-purple-500 to-pink-500 rounded-full"
+            initial={{ x: "200%" }}
+            animate={{ x: "-200%" }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear",
+              delay: 1.5,
+            }}
+          />
+          <motion.div
+            className="absolute bottom-0 left-0 w-1 h-full bg-gradient-to-t from-purple-500 to-pink-500 rounded-full"
+            initial={{ y: "200%" }}
+            animate={{ y: "-200%" }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "linear",
+              delay: 2.25,
+            }}
+          />
+          
           <motion.div
             ref={ref}
-            className=" select-none"
-            initial={{ opacity: 0, x: -200 }}
-            animate={inview ? { opacity: 1, x: 0 } : { opacity: 0, x: -200 }}
+            className="select-none relative z-10" 
+            initial={{ opacity: 0, x: -400 }}
+            animate={inview ? { opacity: 1, x: 0 } : { opacity: 0, x: -400 }}
             transition={{ duration: 2, ease: "anticipate" }}
           >
-            <div className=" lg:h-80 lg:w-160 h-auto  bg-gradient-to-br from-[#251b356d] via-[#2b164964] to-[#3b0f606f] rounded-3xl py-5 px-9 text-emerald-100 animate-slideY shadow-[0_0_35px_-5px_rgba(91,57,159,0.7)] hover:shadow-[0_0_40px_-5px_rgba(91,57,159,0.7)]">
+            <div className="lg:h-80 lg:w-160 h-auto bg-gradient-to-br from-[#251b356d] via-[#2b164964] to-[#3b0f606f] rounded-3xl py-5 px-9 text-emerald-100  shadow-[0_0_35px_-5px_rgba(91,57,159,0.7)] hover:shadow-[0_0_40px_-5px_rgba(91,57,159,0.7)] overflow-hidden">
               <h1 className="mb-3 font-bold font-stretch-120% text-3xl text-purple-50 text-shadow-indigo-900 text-shadow-2xs">
                 Hello, I'm Omkar Gudappe,
               </h1>
               <p>
-                a passionate student with a keen interest in web development. I
+                A passionate student with a keen interest in web development. I
                 have recently completed my Bachelor's degree in Computer Science
                 and I'm eager to apply my skills to real-world projects to gain
                 experience and deepen my understanding of industry-level
@@ -115,15 +157,8 @@ const Hero = () => {
         </Tilt>
         <div
           id="LaptopTarget"
-          className="bg-gradient-to-tr from-[#588ef2] via-[#5b399fdf] to-[#544ce5]  p-3 rounded-full lg:h-90 lg:w-90 h-80 w-80 shadow-[0_0_75px_-5px_rgba(88,142,242,0.6)] hover:shadow-[0_0_75px_-5px_rgba(108,59,130,0.7)]"
+          className="lg:h-90 lg:w-90 h-80 w-80"
         >
-          <div className="rounded-full lg:h-84 lg:w-84 h-74 w-74 flex justify-center items-center overflow-hidden">
-            <img
-              src="https://wallpapercave.com/wp/wp11841496.jpg"
-              alt=""
-              className="h-full w-full object-cover"
-          />
-          </div>
         </div>
       </div>
     </div>

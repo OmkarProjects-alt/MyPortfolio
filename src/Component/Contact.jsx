@@ -5,7 +5,6 @@ import { motion , useInView  } from "framer-motion";
 import { InView } from "react-intersection-observer";
 
 const Contact = () => {
-  // const [Toast , setToast] = useState({status: false, message: null});
   const [Toast, setToast] = useState([]);
   const [Name, setName] = useState("");
   const [Email, setEmail] = useState("");
@@ -160,7 +159,6 @@ const Contact = () => {
           </div>
         ))}
       </div>
-      {/* <div className='fixed inset-0 z-0 pointer-events-none' id='contactStarsContainer'/> */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <StarStreakBackground />
       </div>

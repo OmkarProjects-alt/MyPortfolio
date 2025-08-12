@@ -1,6 +1,6 @@
-import React from 'react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls , useTexture , Edges , Decal , Float } from '@react-three/drei'
+import { motion } from 'framer-motion'
 
 const Model = ({lang}) => {
 
@@ -28,18 +28,21 @@ const Model = ({lang}) => {
 }
 
 const LanguageBall = ({lang}) => {
+
   return (
-     <Canvas
-      gl={{antialias: false , powerPreference: "high-performance"}}
-      // frameloop='demand'
-     >
-        <ambientLight intensity={2} />
-        <pointLight position={[10, 10, 10]} />
-        <directionalLight position={[-10, -10, -10]} intensity={0.5} />
-        <Model lang={lang} />
-        <OrbitControls enableZoom={false} />
-        
-     </Canvas>
+    <motion.div
+      className=' w-23'
+    >
+      <Canvas
+        gl={{antialias: false , powerPreference: "high-performance"}}
+      >
+          <ambientLight intensity={2} />
+          <pointLight position={[10, 10, 10]} />
+          <directionalLight position={[-10, -10, -10]} intensity={0.5} />
+          <Model lang={lang} />
+          <OrbitControls enableZoom={false} />
+      </Canvas>
+    </motion.div>
   )
 }
 

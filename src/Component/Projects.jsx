@@ -122,14 +122,11 @@ const Projects = () => {
     setHoverProject({ status: false, projectId: null });
   };
 
-  // onMouseEnter={() => handleMouseEnter(project.id)} onMouseLeave={handleMouseLeave}
-
   return (
     <div
       id="Projects"
       className="z-10 relative bg-gradient-to-br from-[#251b35da] via-[#2b1649e1] to-[#3b0f60dc] p-10 "
     >
-      {/* <div style={{backgroundImage: `url(${Background})`}} className='absolute end-0  inset-0 z-0 bg-cover bg-center opacity-30'></div> */}
       <img
         src={Background}
         style={{ rotate: "360deg" }}

@@ -15,7 +15,7 @@ const MainPage = () => {
   const [showLoading , setShowLoading] = useState(true);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Scroll to top on load
+    window.scrollTo(0, 0);
   }, []);
 
 

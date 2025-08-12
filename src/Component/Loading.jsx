@@ -7,7 +7,6 @@ const Loading = ({ onComplete }) => {
   const totalDuration = 10000;
 
   useEffect(() => {
-    // Disable scrolling
     document.body.style.overflow = 'hidden';
 
     const startTime = Date.now();
@@ -20,9 +19,8 @@ const Loading = ({ onComplete }) => {
         clearInterval(interval);
         setIsComplete(true);
         
-        // Allow a short delay before hiding
         setTimeout(() => {
-          document.body.style.overflow = ''; // restore scrolling
+          document.body.style.overflow = '';
           if (onComplete) onComplete();
         }, 500);
       }
@@ -30,7 +28,7 @@ const Loading = ({ onComplete }) => {
 
     return () => {
       clearInterval(interval);
-      document.body.style.overflow = ''; // Cleanup
+      document.body.style.overflow = '';
     };
   }, [onComplete]);
 

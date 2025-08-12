@@ -8,6 +8,7 @@ const LapTopModel = ({ mainRef }) => {
   const [Coordinates, setCoordinates] = useState(0);
   const [targetOffset, setTargetOffset] = useState({ x: 0, y: 0 });
   const containerRef = useRef(null);
+  const [Width , setWidth] = useState(false);
 
   useEffect(() => {
     const laptopEl = containerRef.current;
@@ -17,8 +18,8 @@ const LapTopModel = ({ mainRef }) => {
       const laptopRect = laptopEl.getBoundingClientRect();
       const targetRect = targetEl.getBoundingClientRect();
 
-      const deltaX = targetRect.left - laptopRect.left + 15;
-      const deltaY = targetRect.top - laptopRect.top + 70;
+      const deltaX = (targetRect.left - laptopRect.left) - 190;
+      const deltaY = (targetRect.top - laptopRect.top) - 50;
       console.log("Target Left" , targetRect.left , "laptop left" , laptopRect.left , "deltaX", deltaX , "deltaY", deltaY)
 
       setTargetOffset({ x: deltaX, y: deltaY });
@@ -32,11 +33,17 @@ const LapTopModel = ({ mainRef }) => {
 
   const y = useTransform(scrollYProgress, [0, 1], [0, targetOffset.y]);
   const x = useTransform(scrollYProgress, [0, 1], [0, targetOffset.x]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.7]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.020]);
 
   scrollYProgress.on("change", (progress) => {
     setCoordinates(progress > 0.6 ? 1 : 0);
   });
+
+  useEffect(() => {
+    if(window.innerWidth <= 576){
+      setWidth(true);
+    }
+  }, [])
 
   return (
     <motion.div
@@ -49,14 +56,15 @@ const LapTopModel = ({ mainRef }) => {
         <directionalLight position={[0, 950, 10]} intensity={1} castShadow />
         <pointLight position={[10, 10, 10]} intensity={200} />
         <Laptop Coordinates={Coordinates} />
-        <OrbitControls
+        {!Width &&
+         <OrbitControls
           enablePan={false}
           enableZoom={false}
           minPolarAngle={Math.PI / 2}
           maxPolarAngle={Math.PI / 2}
           minAzimuthAngle={-Infinity}
           maxAzimuthAngle={Infinity}
-        />
+        />}
       </Canvas>
     </motion.div>
   );

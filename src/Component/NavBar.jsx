@@ -19,12 +19,10 @@ const NavBar = () => {
   return (
     <nav className="z-40 backdrop-blur-md bg-gradient-to-br from-[#1e0a3ad5]  to-[#231230cc] border-b-2 border-[#9943e9] px-4 py-3 fixed top-0 left-0 w-full" style={{ fontFamily: 'Space Grotesk, sans-serif'}}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Brand/logo */}
         <a className="text-2xl font-bold text-[#a8c0ff]" href="#Home" onClick={(e) => { e.preventDefault(); ScrollTo('Home' , 50)}}>
           Portfolio
         </a>
 
-        {/* Mobile menu button */}
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -40,7 +38,6 @@ const NavBar = () => {
           </button>
         </div>
 
-        {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-8">
           <a href="#Home" onClick={(e) => { e.preventDefault(); ScrollTo('Home' , 50)}} className="text-white hover:text-blue-300 transition-colors">
             Home
