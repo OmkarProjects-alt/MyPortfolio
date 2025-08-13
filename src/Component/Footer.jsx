@@ -93,7 +93,7 @@ const Footer = () => {
                 <a href="https://github.com/OmkarProjects-alt?tab=repositories" className="text-3xl cursor-pointer">
                   <i className="fab fa-github hover:scale-115"></i>
                 </a>
-                <a href='' className="text-3xl cursor-pointer">
+                <a href='http://www.linkedin.com/in/omkar-gudappe-a13644277' className="text-3xl cursor-pointer">
                   <i className="fab fa-linkedin hover:scale-115"></i>
                 </a>
               </div>
