@@ -9,7 +9,7 @@ const Laptop = React.forwardRef((props, ref) => {
   const laptopRef = useRef();
   const [modelLoaded, setModelLoaded] = useState(false);
 
-  const model = useGLTF("models/Laptop.glb", true);
+  const model = useGLTF("models/Laptop-draco.glb", true);
   const screenTexture = useTexture(
     `${import.meta.env.BASE_URL}models/IMG/LaptopScreen.png`
   );
