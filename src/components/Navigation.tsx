@@ -20,8 +20,6 @@ export default function Navigation({
 }: NavigationProps) {
   return (
     <>
-      {/* Desktop and tablet navigation */}
-
       <nav
         aria-label="Main navigation"
         className="fixed right-5 top-1/2 z-50 hidden -translate-y-1/2 md:block"
